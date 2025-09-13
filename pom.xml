@@ -4,16 +4,14 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.minkang.ultimate</groupId>
   <artifactId>UltimateItemEdit</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <name>UltimateItemEdit</name>
   <packaging>jar</packaging>
-
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
-
   <repositories>
     <repository>
       <id>spigotmc-repo</id>
@@ -24,7 +22,6 @@
       <url>https://oss.sonatype.org/content/groups/public/</url>
     </repository>
   </repositories>
-
   <dependencies>
     <dependency>
       <groupId>org.spigotmc</groupId>
@@ -33,7 +30,6 @@
       <scope>provided</scope>
     </dependency>
   </dependencies>
-
   <build>
     <plugins>
       <plugin>
