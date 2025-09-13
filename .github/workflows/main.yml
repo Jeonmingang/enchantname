@@ -1,0 +1,57 @@
+name: Build (UltimateItemEdit)
+
+on:
+  push:
+    branches: [ "**" ]
+    paths-ignore:
+      - "**.md"
+      - "**.txt"
+      - "**.png"
+      - "**.jpg"
+      - "**.jpeg"
+      - "**.gif"
+  pull_request:
+    branches: [ "**" ]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    env:
+      JAVA_VERSION: "8"
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Temurin JDK ${{ env.JAVA_VERSION }}
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: ${{ env.JAVA_VERSION }}
+          cache: maven
+
+      - name: Show Maven & Java versions
+        run: |
+          mvn -v
+          java -version
+
+      - name: Build with Maven (clean package, skip tests)
+        run: mvn -B -e -DskipTests clean package
+
+      - name: Upload JAR artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: UltimateItemEdit-build-${{ github.run_number }}
+          path: |
+            target/*.jar
+          if-no-files-found: error
+          retention-days: 14
