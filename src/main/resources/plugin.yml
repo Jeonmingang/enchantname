@@ -1,7 +1,7 @@
 name: UltimateItemEdit
 main: com.minkang.ultimate.itemedit.Main
 version: 1.0.4
-api-version: "1.16"
+api-version: 1.16
 author: Mingang Jeon
 website: https://example.com
 commands:
