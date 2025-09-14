@@ -1,7 +1,7 @@
 name: UltimateItemEdit
 main: com.minkang.ultimate.itemedit.Main
-version: 1.0.3
-api-version: 1.16
+version: 1.0.4
+api-version: "\1"
 author: Mingang Jeon
 website: https://example.com
 commands:
@@ -13,6 +13,14 @@ commands:
     description: "손에 든 아이템의 설명(lore)을 추가/삭제합니다."
     usage: "/아이템설명 추가 <문장...> | /아이템설명 삭제"
     permission: ultimate.itemedit.lore
+  인첸트:
+    description: "손에 든 아이템에 인첸트를 부여합니다. 사용법: /인첸트 <인첸트> <수치>"
+    usage: "/인첸트 <인첸트> <수치>"
+    permission: ultimate.itemedit.enchant
+  인첸트리로드:
+    description: "설정을 리로드합니다 (관리자)"
+    usage: "/인첸트리로드"
+    permission: ultimate.itemedit.admin
 permissions:
   ultimate.itemedit.*:
     default: op
@@ -23,14 +31,3 @@ permissions:
     default: op
   ultimate.itemedit.lore:
     default: op
-
-
-commands:
-  인첸트:
-    description: "손에 든 아이템에 인첸트를 부여합니다. 사용법: /인첸트 <인첸트> <수치>"
-    usage: "/인첸트 <인첸트> <수치>"
-    permission: ultimate.itemedit.enchant
-  인첸트리로드:
-    description: "설정을 리로드합니다 (관리자)"
-    usage: "/인첸트리로드"
-    permission: ultimate.itemedit.admin

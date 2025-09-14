@@ -5,16 +5,6 @@ no-item: "&e손에 든 아이템이 없습니다."
 no-perm: "&c권한이 없습니다."
 
 
-# /인첸트 명령 설정
 enchant:
-  allowed-worlds: []
+  max-level: 10000
   enable-korean-aliases: true
-  messages:
-    not-player: "&c플레이어만 실행할 수 있습니다."
-    no-permission: "&c권한이 없습니다."
-    usage: "&c사용법: /인첸트 <인첸트> <수치>"
-    level-nan: "&c수치는 숫자여야 합니다."
-    world-blocked: "&c이 월드에서는 사용할 수 없습니다."
-    unknown-enchant: "&c알 수 없는 인첸트입니다: &f{name}"
-    no-item: "&c손에 아이템을 들어주세요."
-    applied-unsafe: "&a인첸트 적용 완료: &f{enchant} &7레벨 &b{level}"

@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 
 public class EnchantCommand implements CommandExecutor, TabCompleter {
 
-    private static final int MAX_LEVEL = 10000;
+    private static final int DEFAULT_MAX_LEVEL = 10000;
     private final Main plugin;
 
     public EnchantCommand(Main plugin) {
@@ -31,6 +31,11 @@ public class EnchantCommand implements CommandExecutor, TabCompleter {
 
     private ConfigurationSection cfg() {
         return plugin.getConfig().getConfigurationSection("enchant");
+    }
+    private int getMaxLevel() {
+        ConfigurationSection c = cfg();
+        if (c != null && c.isInt("max-level")) return c.getInt("max-level");
+        return DEFAULT_MAX_LEVEL;
     }
     private String msg(String path, String def){
         String prefix = color(plugin.getConfig().getString("prefix", ""));
@@ -72,7 +77,8 @@ public class EnchantCommand implements CommandExecutor, TabCompleter {
         try { level = Integer.parseInt(levelStr); }
         catch (NumberFormatException ex) { p.sendMessage(msg("level-nan", "&c수치는 숫자여야 합니다.")); return true; }
         if (level < 1) level = 1;
-        if (level > MAX_LEVEL) level = MAX_LEVEL;
+        int MAX = getMaxLevel();
+        if (level > MAX) level = MAX;
 
         boolean enableAliases = cfg() == null || cfg().getBoolean("enable-korean-aliases", true);
         Enchantment enchantment = EnchantAliases.find(enchName, enableAliases);
